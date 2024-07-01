@@ -60,6 +60,41 @@ namespace Ticketing_System_Interview_Exam.Controllers
             }
             return bugs;
         }
+
+        private Bug GetStatus(Bug context)
+        {
+            //foreach (var item in context)
+            //{
+                switch (context.Status)
+                {
+                    case "0":
+                        {
+                            context.Status = BugStatus.open.ToString();
+                            //bugs.Add(item);
+                            break;
+                        }
+                    case "1":
+                        {
+                            context.Status = BugStatus.inprogress.ToString();
+                            //bugs.Add(item);
+                            break;
+                        }
+                    case "2":
+                        {
+                             context.Status = BugStatus.resolved.ToString();
+                            //bugs.Add(item);
+                            break;
+                        }
+                    case "3":
+                        {
+                            context.Status = BugStatus.closed.ToString();
+                            //bugs.Add(item);
+                            break;
+                        }
+                //}
+            }
+            return context;
+        }
         // GET: Bugs
         public async Task<IActionResult> Index()
         {
@@ -88,7 +123,7 @@ namespace Ticketing_System_Interview_Exam.Controllers
                 return NotFound();
             }
 
-            return View(bug);
+            return View(GetStatus(bug));
         }
 
         // GET: Bugs/Create
@@ -244,7 +279,7 @@ namespace Ticketing_System_Interview_Exam.Controllers
                 return NotFound();
             }
 
-            return View(bug);
+            return View(GetStatus(bug));
         }
 
         // POST: Bugs/Delete/5
