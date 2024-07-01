@@ -22,6 +22,17 @@ namespace Ticketing_System_Interview_Exam.Controllers
         // GET: Bugs
         public async Task<IActionResult> Index()
         {
+            //foreach(var item in _context.Bug)
+            //{
+            //    switch (item.Status)
+            //    {
+            //        case 0:
+            //            {
+
+            //                break;
+            //            }
+            //    }
+            //}
             return View(await _context.Bug.ToListAsync());
         }
         // GET: Bugs filtered, still need to change code
@@ -92,6 +103,15 @@ namespace Ticketing_System_Interview_Exam.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Statuses = Enum.GetValues(typeof(BugStatus))
+                          .Cast<BugStatus>()
+                          .Select(s => new SelectListItem
+                          {
+                              Text = s.ToString(),
+                              Value = ((int)s).ToString()
+                          }).ToList();
+
             return View(bug);
         }
 
