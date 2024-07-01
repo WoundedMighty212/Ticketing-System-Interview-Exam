@@ -24,12 +24,6 @@ namespace Ticketing_System_Interview_Exam.Controllers
             return View();
         }
 
-        public Task<IActionResult> QA_Index()
-        {
-            BugsController bugsController = new BugsController(_context);
-            return bugsController.Index();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
