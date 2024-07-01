@@ -4,7 +4,56 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+    body {
+        background-color: #333;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    h1, h4 {
+        color: #dc3545; /* Red color for headings */
+    }
+
+    .form-control {
+        background-color: #444;
+        color: #fff;
+        border: 1px solid #dc3545;
+    }
+
+    .control-label {
+        color: #dc3545; /* Red color for labels */
+    }
+
+    .text-danger {
+        color: #dc3545; /* Red color for validation messages */
+    }
+
+    .btn-primary {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+        .btn-primary:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    a {
+        color: #dc3545;
+    }
+
+        a:hover {
+            color: #c82333;
+        }
+</style>
+
+<h1>@ViewData["Title"]</h1>
 
 <h4>Bug</h4>
 <hr />
@@ -23,12 +72,12 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-            <label asp-for="Status" class="control-label"></label>
-            <select asp-for="Status" class="form-control" asp-items="ViewBag.Statuses">
-                <option value="">Select Status</option>
-            </select>
-            <span asp-validation-for="Status" class="text-danger"></span>
-             </div>
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control" asp-items="ViewBag.Statuses">
+                    <option value="">Select Status</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="CreatedByUserId" class="control-label"></label>
                 <input asp-for="CreatedByUserId" class="form-control" />
@@ -46,5 +95,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
