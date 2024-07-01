@@ -22,17 +22,6 @@ namespace Ticketing_System_Interview_Exam.Controllers
         // GET: Bugs
         public async Task<IActionResult> Index()
         {
-            //foreach(var item in _context.Bug)
-            //{
-            //    switch (item.Status)
-            //    {
-            //        case 0:
-            //            {
-
-            //                break;
-            //            }
-            //    }
-            //}
             return View(await _context.Bug.ToListAsync());
         }
         // GET: Bugs filtered, still need to change code
