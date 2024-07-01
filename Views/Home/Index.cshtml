@@ -2,13 +2,48 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>
-        Welcome to the Demo of my Ticketing System for Bug Tracking!
+<style>
+    body {
+        background-color: #333;
+        color: #fff;
+    }
 
-        I'm delighted to present my ticketing system designed to streamline bug tracking processes. In this demo, Quality Assurers can effortlessly create, edit, and delete bug reports, while Developers have the ability to mark them as Resolved. I've crafted this solution with a focus on simplicity and effectiveness to enhance our development workflows. I hope you enjoy exploring its functionalities and seeing how it aligns with our project goals. Your feedback is invaluable to me as I continue to refine and improve my system.
+    .jumbotron {
+        background-color: #dc3545; /* Red background for jumbotron */
+        color: #fff; /* White text */
+    }
 
-        Thank you for joining me!
-    </p>
+    .lead {
+        color: #fff; /* White text for lead paragraphs */
+    }
+
+    .btn-primary {
+        background-color: #dc3545; /* Red background for primary buttons */
+        border-color: #dc3545; /* Red border for primary buttons */
+    }
+
+        .btn-primary:hover {
+            background-color: #c82333; /* Darker red on hover */
+            border-color: #c82333; /* Darker red border on hover */
+        }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome</h1>
+                <p class="lead">
+                    Welcome to the Demo of my Ticketing System for Bug Tracking!
+                </p>
+            </div>
+            <p>
+                I'm delighted to present my ticketing system designed to streamline bug tracking processes. In this demo, Quality Assurers can effortlessly create, edit, and delete bug reports, while Developers have the ability to mark them as Resolved. I've crafted this solution with a focus on simplicity and effectiveness to enhance our development workflows. I hope you enjoy exploring its functionalities and seeing how it aligns with our project goals. Your feedback is invaluable to me as I continue to refine and improve my system.
+            </p>
+            <p>
+                Thank you for joining me!
+            </p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+        </div>
+    </div>
 </div>
