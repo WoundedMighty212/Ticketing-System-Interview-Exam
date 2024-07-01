@@ -4,11 +4,47 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    body {
+        background-color: #333;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #dc3545; /* Red color for heading */
+    }
+
+    .table {
+        background-color: #444; /* Dark background for table */
+        color: #fff; /* White text color */
+    }
+
+    .table th {
+        background-color: #dc3545; /* Red background for table header */
+        color: #fff; /* White text color for table header */
+    }
+
+    .table td, .table th {
+        border: 1px solid #dc3545; /* Red border for table cells */
+    }
+
+    .table a {
+        color: #dc3545; /* Red color for links */
+    }
+
+    .table a:hover {
+        color: #c82333; /* Darker red color on hover */
+    }
+</style>
+
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -28,26 +64,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Summary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedByUserId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BugId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BugId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BugId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Summary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedByUserId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BugId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BugId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BugId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
