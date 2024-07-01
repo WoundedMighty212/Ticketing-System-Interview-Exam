@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Ticketing_System_Interview_Exam.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Ticketing_System_Interview_ExamContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Ticketing_System_Interview_ExamContext") ?? throw new InvalidOperationException("Connection string 'Ticketing_System_Interview_ExamContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
