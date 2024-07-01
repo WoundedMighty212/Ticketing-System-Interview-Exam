@@ -27,7 +27,8 @@ namespace Ticketing_System_Interview_Exam.Controllers
         // GET: Bugs filtered, still need to change code
         public async Task<IActionResult> RD_Index()
         {
-            return View(await _context.Bug.ToListAsync());
+            List<Bug> listOfBugs = _context.Bug.Where(j => j.Status == "open").ToList();
+            return View(listOfBugs);
         }
         // GET: Bugs/Details/5
         public async Task<IActionResult> Details(int? id)
