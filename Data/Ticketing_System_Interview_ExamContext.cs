@@ -19,8 +19,18 @@ namespace Ticketing_System_Interview_Exam.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Bug>().ToTable("Bug");
             modelBuilder.Entity<User>().ToTable("User Table");
+
+            // Seed data
+            modelBuilder.Entity<Bug>().HasData(
+                new Bug { BugId = 1, Summary = "Sample Bug 1", Description = "This is a sample bug", Status = "Open", CreatedByUserId = 1 },
+                new Bug { BugId = 2, Summary = "Sample Bug 2", Description = "This is another sample bug", Status = "Closed", CreatedByUserId = 1 },
+                new Bug { BugId = 3, Summary = "Sample Bug 3", Description = "This is a sample bug", Status = "inprogress", CreatedByUserId = 1 },
+                new Bug { BugId = 4, Summary = "Sample Bug 4", Description = "This is another sample bug", Status = "resolved", CreatedByUserId = 1 }
+            );
         }
     }
 }
