@@ -27,7 +27,7 @@ namespace Ticketing_System_Interview_Exam.Controllers
         // GET: Bugs filtered, still need to change code
         public async Task<IActionResult> RD_Index()
         {
-            List<Bug> listOfBugs = _context.Bug.Where(j => j.Status == "open").ToList();
+            List<Bug> listOfBugs = _context.Bug.Where(j => j.Status.ToString() == "open").ToList();
             return View(listOfBugs);
         }
         // GET: Bugs/Details/5
@@ -51,6 +51,14 @@ namespace Ticketing_System_Interview_Exam.Controllers
         // GET: Bugs/Create
         public IActionResult Create()
         {
+            ViewBag.Statuses = Enum.GetValues(typeof(BugStatus))
+                           .Cast<BugStatus>()
+                           .Select(s => new SelectListItem
+                           {
+                               Text = s.ToString(),
+                               Value = ((int)s).ToString()
+                           }).ToList();
+
             return View();
         }
 
