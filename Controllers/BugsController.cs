@@ -22,12 +22,12 @@ namespace Ticketing_System_Interview_Exam.Controllers
         // GET: Bugs
         public async Task<IActionResult> Index()
         {
-            return View(/*await _context.Bug.ToListAsync()*/);
+            return View(await _context.Bug.ToListAsync());
         }
         // GET: Bugs filtered, still need to change code
         public async Task<IActionResult> RD_Index()
         {
-            return View(/*await _context.Bug.ToListAsync()*/);
+            return View(await _context.Bug.ToListAsync());
         }
         // GET: Bugs/Details/5
         public async Task<IActionResult> Details(int? id)
