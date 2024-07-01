@@ -19,6 +19,11 @@ namespace Ticketing_System_Interview_Exam.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// this Method is to convert Status enum to string 
+        /// </summary>
+        /// <param name="context">this is the list of Bugs objects</param>
+        /// <returns>a list of bugs that status has been converted</returns>
         private List<Bug> GetStatus(List<Bug> context)
         {
             List<Bug> bugs = new List<Bug>();
