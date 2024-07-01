@@ -19,17 +19,54 @@ namespace Ticketing_System_Interview_Exam.Controllers
             _context = context;
         }
 
+        private List<Bug> GetStatus(List<Bug> context)
+        {
+            List<Bug> bugs = new List<Bug>();
+            
+            foreach (var item in context)
+            {
+                switch (item.Status)
+                {
+                    case "0":
+                        {
+                            item.Status = BugStatus.open.ToString();
+                            bugs.Add(item);
+                            break;
+                        }
+                    case "1":
+                        {
+                            item.Status = BugStatus.inprogress.ToString();
+                            bugs.Add(item);
+                            break;
+                        }
+                    case "2":
+                        {
+                            item.Status = BugStatus.resolved.ToString();
+                            bugs.Add(item);
+                            break;
+                        }
+                    case "3":
+                        {
+                            item.Status = BugStatus.closed.ToString();
+                            bugs.Add(item);
+                            break;
+                        }
+                }
+            }
+            return bugs;
+        }
         // GET: Bugs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Bug.ToListAsync());
+            var list = await _context.Bug.ToListAsync();
+            return View(GetStatus(list));
         }
         // GET: Bugs filtered, still need to change code
         public async Task<IActionResult> RD_Index()
         {
             List<Bug> listOfBugs = _context.Bug.Where(j => j.Status.ToString() == "0"
             || j.Status.ToString() == "1").ToList();
-            return View(listOfBugs);
+            return View(GetStatus(listOfBugs));
         }
         // GET: Bugs/Details/5
         public async Task<IActionResult> Details(int? id)
