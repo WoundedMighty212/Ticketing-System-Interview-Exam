@@ -72,6 +72,7 @@ namespace Ticketing_System_Interview_Exam.Controllers
         {
             if (ModelState.IsValid)
             {
+                bug.CreatedByUserId = 1;
                 _context.Add(bug);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -120,6 +121,7 @@ namespace Ticketing_System_Interview_Exam.Controllers
             {
                 try
                 {
+                    bug.CreatedByUserId = 1;
                     _context.Update(bug);
                     await _context.SaveChangesAsync();
                 }
