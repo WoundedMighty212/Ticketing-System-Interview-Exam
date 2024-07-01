@@ -104,7 +104,7 @@ namespace Ticketing_System_Interview_Exam.Controllers
 
             return View(bug);
         }
-
+        BugStatus bugstatus;
         public async Task<IActionResult> Edit_RD(int? id)
         {
             if (id == null)
@@ -118,14 +118,36 @@ namespace Ticketing_System_Interview_Exam.Controllers
                 return NotFound();
             }
 
-            ViewBag.Statuses = Enum.GetValues(typeof(BugStatus))
-                          .Cast<BugStatus>()
-                          .Select(s => new SelectListItem
-                          {
-                              Text = s.ToString(),
-                              Value = ((int)s).ToString()
-                          }).ToList();
+            switch (bug.Status)
+            {
+                case "0":
+                    {
+                        bugstatus = BugStatus.open;
+                        break;
+                    }
+                case "1":
+                    {
+                        bugstatus = BugStatus.inprogress;
+                        break;
+                    }
+                case "2":
+                    {
+                        bugstatus = BugStatus.resolved;
+                        break;
+                    }
+                case "3":
+                    {
+                        bugstatus = BugStatus.closed;
+                        break;
+                    }
+            }
 
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            selectListItems.Add(new SelectListItem($"{bugstatus}","0"));
+            selectListItems.Add(new SelectListItem($"{BugStatus.resolved}", "1"));
+
+            ViewBag.Statuses = selectListItems.ToList();
+            bug.Status = "0";
             return View(bug);
         }
 
