@@ -15,5 +15,12 @@ namespace Ticketing_System_Interview_Exam.Data
         }
 
         public DbSet<Ticketing_System_Interview_Exam.Models.Bug> Bug { get; set; } = default!;
+        public DbSet<Ticketing_System_Interview_Exam.Models.User> User { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Bug>().ToTable("Bug");
+            modelBuilder.Entity<User>().ToTable("User Table");
+        }
     }
 }
